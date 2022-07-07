@@ -13,11 +13,3 @@ CREATE TABLE "items" (
 --Quantity - allow for decimal numbers (required)
 --Unit - text, allow up to 20 characters (optional)
 
-INSERT INTO "items" 
-	("name", "quantity", "unit")
-VALUES 
-	('Apples', 5, 'lbs'),
-	('Bread', 1, 'loaf'),
-	('Milk', 1, 'gallon'),
-	('Sliced Almonds', 2, 'cups'),
-	('Bananas', 1, 'bunch');
