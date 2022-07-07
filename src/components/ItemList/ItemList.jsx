@@ -1,4 +1,4 @@
-function ItemList() {
+function ItemList({ items }) {
 	return (
 		<>
 			<h2>Item List</h2>
@@ -13,10 +13,10 @@ function ItemList() {
 					</tr>
 				</thead>
 				<tbody>
-					{itemList.map((item) => {
+					{items.map((item) => {
 						return (
-							<tr>
-								<td>{item.n}</td>
+							<tr key={item.id}>
+								<td>{item.name}</td>
 								<td>{item.quantity}</td>
 								<td>{item.unit}</td>
 								<td>
