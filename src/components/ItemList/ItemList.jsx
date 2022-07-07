@@ -4,22 +4,34 @@ function ItemList() {
             <h2>Item List</h2>
             <table>
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Unit</th>
-                    </tr>
-                </thead>
+                <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Remove</th>
+                            <th>Buy</th>
+                        </tr>
+                    </thead>
                 <tbody>
-                    <td>Apples</td>
-                    <td>5</td>
-                    <td>2lbs</td>
-                    <button type="delete">Remove</button>
-                    <button type="Edit">Buy</button>
+                        {itemList.map((item) => { 
+                        return(
+                            <tr>
+                            <td>{item.n}</td>
+                            <td>{item.quantity}</td>
+                            <td>{item.unit}</td>
+                            <td>
+                                <button type='delete'>Remove</button>
+                            </td>
+                            <td>
+                                <button type='Edit'>Buy</button>
+                            </td>
+                        </tr>
+                        )})}
                 </tbody>
             </table>
         </>
     );
 }
+
 
 export default ItemList;
