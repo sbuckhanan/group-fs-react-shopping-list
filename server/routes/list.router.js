@@ -19,9 +19,10 @@ router.get('/', (req, res) => {
 // POST
 router.post('/', (req, res) => {
     const newItems = req.body
-    const sqlText = `INSERT INTO "items" VALUES $1`
+    const sqlText = `INSERT INTO "items" ("name", "quantity", "unit", "purchased" )
+    VALUES ($1, $2, $3, $4);`;
 
-    pool.query(sqlText, [newItems])
+    pool.query(sqlText, [newItems.name, newItems.quantity, newItems.unit, newItems.purchased])
         .then((result) => {
             res.sendStatus(201);
         }).catch((error) => {
@@ -33,7 +34,7 @@ router.post('/', (req, res) => {
 // PUT
 
 router.put('/:id', (req, res) =>{
-    let itemsID = req.params.id
+    let itemsId = req.params.id
     let buyItems = req.body. //make changes here??
 
     console.log('Put request:', buyItems);
@@ -42,7 +43,7 @@ router.put('/:id', (req, res) =>{
         sqlText = `UPDATE "items" SET "purchased" = true WHERE id = $1;`;
     } else {res.sendStatus(500);
     }
-    pool.query(sqlText, [itemsID])
+    pool.query(sqlText, [itemsId])
         .then((dbResponse) => {
             res.send(dbResponse.rows);
         }).catch((error) => {
@@ -58,7 +59,7 @@ router.delete('/:id', (req, res) => {
     const itemsId = req.params.id;
     console.log('item ID:', req.params.id);
 
-    const sqlText = `DELETE FROM "items" WHERE id = $1`
+    const sqlText = `DELETE FROM "items" WHERE id = $1;`;
     
     pool.query(sqlText, [itemsId])
         .then(() => {
