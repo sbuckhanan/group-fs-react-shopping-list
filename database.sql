@@ -6,7 +6,7 @@ CREATE TABLE "items" (
 	"name" VARCHAR (80) NOT NULL,
 	"quantity" DECIMAL(6,2) NOT NULL,
 	"unit" VARCHAR(20),
-    "purchased" BOOLEAN NOT NULL,
+    "purchased" BOOLEAN DEFAULT 'false'
 );
 
 --Name - text, allow up to 80 characters (required)
