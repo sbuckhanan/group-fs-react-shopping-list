@@ -1,4 +1,3 @@
-import axios from 'axios';
 import Item from '../Item/Item';
 
 function ItemList({ items, getItems }) {
