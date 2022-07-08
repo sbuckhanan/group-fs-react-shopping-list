@@ -5,7 +5,7 @@ function Item({ item, getItems }) {
 		console.log('Click Buy');
 		const id = event.target.getAttribute('data-id');
 		console.log(id);
-
+    
 		axios
 			.put(`/list/${id}`)
 			.then((response) => {
