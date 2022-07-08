@@ -7,32 +7,32 @@ import ItemList from '../ItemList/ItemList';
 import ShoppingList from '../ShoppingList/ShoppingList';
 
 function App() {
-	const [itemList, setItemList] = useState([]);
+    const [itemList, setItemList] = useState([]);
 
-	useEffect(() => {
-		getItems();
-	}, []);
+    useEffect(() => {
+        getItems();
+    }, []);
 
-	const getItems = () => {
-		axios
-			.get('/list')
-			.then((response) => {
-				setItemList(response.data);
-			})
-			.catch((err) => {
-				alert('error getting items');
-				console.log(err);
-			});
-	};
+    const getItems = () => {
+        axios
+            .get('/list')
+            .then((response) => {
+                setItemList(response.data);
+            })
+            .catch((err) => {
+                alert('error getting items');
+                console.log(err);
+            });
+    };
 
-	return (
-		<div className='App'>
-			<Header />
-			<ItemForm getItems={getItems} />
-			<ShoppingList />
-			<ItemList items={itemList} getItems={getItems} />
-		</div>
-	);
+    return (
+        <div className="App">
+            <Header />
+            <ItemForm getItems={getItems} />
+            <ShoppingList getItems={getItems} />
+            <ItemList items={itemList} getItems={getItems} />
+        </div>
+    );
 }
 
 export default App;
