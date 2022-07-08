@@ -9,7 +9,6 @@ import ShoppingList from '../ShoppingList/ShoppingList';
 function App() {
 	const [itemList, setItemList] = useState([]);
 
-
 	useEffect(() => {
 		getItems();
 	}, []);
@@ -29,9 +28,9 @@ function App() {
 	return (
 		<div className='App'>
 			<Header />
-			<ItemForm getItems={getItems}/>
+			<ItemForm getItems={getItems} />
 			<ShoppingList />
-			<ItemList items={itemList} />
+			<ItemList items={itemList} getItems={getItems} />
 		</div>
 	);
 }
