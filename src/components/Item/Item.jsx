@@ -22,7 +22,7 @@ function Item({ item, getItems }) {
 		const id = event.target.getAttribute('data-id');
 		console.log(id);
 		axios
-			.delete(`/list/${id}`)
+			.delete(`/list/delete/${id}`)
 			.then((response) => {
 				console.log(response);
 				getItems();

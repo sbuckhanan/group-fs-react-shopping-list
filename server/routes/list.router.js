@@ -69,7 +69,7 @@ router.put('/update/:id', (req, res) => {
 
 // DELETE
 
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
 	const itemsId = req.params.id;
 	console.log('item ID:', req.params.id);
 
@@ -77,6 +77,21 @@ router.delete('/:id', (req, res) => {
 
 	pool
 		.query(sqlText, [itemsId])
+		.then(() => {
+			console.log('Item deleted');
+			res.sendStatus(200);
+		})
+		.catch((error) => {
+			console.log('Error in router DELETE:', error);
+			res.sendStatus(500);
+		});
+});
+
+router.delete('/deleteAll/', (req, res) => {
+	const sqlText = `DELETE FROM "items";`;
+
+	pool
+		.query(sqlText)
 		.then(() => {
 			console.log('Item deleted');
 			res.sendStatus(200);

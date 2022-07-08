@@ -18,6 +18,15 @@ function ShoppingList({ getItems }) {
 	// The `Clear` button should remove all items from the list, deleting them from the database.
 	const clear = () => {
 		console.log('clear clicked!');
+		axios
+			.delete(`/list/deleteAll`)
+			.then((response) => {
+				console.log(response);
+				getItems();
+			})
+			.catch((error) => {
+				alert('Error with updating', error);
+			});
 	};
 
 	return (
